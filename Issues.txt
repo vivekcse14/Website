@@ -1,0 +1,35 @@
+#Plz do note Down all the Issues in here.
+
+
+#1[Fixed]
+Naming the ranks in certain format gives this error while uploading the image for Directors & Deans(former).
+Eg:
+Director(i)
+Director(I)
+Director(IIT-BHU)
+
+ Storage can not find an available filename for "C:\Users\shiva\Documents\GitHub\iitbhu - Copy (3)\media\images\Directors & Deans\Director(i)\sf_M0Ftj5l.jpg". Please make sure that the corresponding file field allows sufficient "max_length".
+
+*No idea how it fixed itself!!
+
+#2 [FIXED]
+index.html
+notification panel -> when notification title exceeds one line. -> arrow box fails to cover the required height.
+
+* The issue will not exist in our dyanmic model as the title of notification is fixed to length(100) which will prevent frontend from breaking.
+
+#3[Partially Fixed]
+templates/*.html
+navigation bar breaks into two pieces/completely slides down the logo if the options in it are more than 7.
+
+#4[Fixed]
+issue raised by Shashank: unable to save faculty_id and Student.dept.
+
+ #5[Fixed]
+notifications size too small in department homepage.
+
+#6[Fixed]
+notification page /department/cse/notification is showing abnormal behaviour
+
+#7
+notification page /notification needs frontend notification(backend complete)

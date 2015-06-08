@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ Department.dept_name }},IIT(BHU)</title>
+    
+    <!-- core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/static/css/animate.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="/static/css/responsive.css" rel="stylesheet">
+    <link href="/static/css/scrollbar.css" rel="stylesheet">
+
+    
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="/static/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+    <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        {% if Department.dept_contact %}
+                            <div class="top-number"><p><i class="fa fa-phone-square"></i>{{ Department.dept_contact }}</p></div>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                       <div class="social">
+                            <ul class="social-share">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                           </div>
+                           <div class="login">
+                                <li><a href="#">Login/Register</a></li>
+                           </div>
+
+                       </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+       <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href='{% url "home" %}'><img src="/static/images/logo.jpg" alt="logo" width="250px"></a>
+                </div>
+                
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href='{% url "home" %}'>Home</a></li>
+                       <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">People<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'faculty' Department.dept_code %}">Faculty</a></li>
+                                <li><a href="{% url 'student' Department.dept_code %}">Student</a></li>
+                                <li><a href="{% url 'staff' Department.dept_code %}">Staff</a></li>
+                                <li><a href="shortcodes.html">Visitors</a></li>
+                                <li><a href="{% url 'staff' Department.dept_code %}">Alumni</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Admission</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shortcodes.html">B.Tech</a></li>
+                                <li><a href="blog-item.html">M.Tech/IDD</a></li>
+                                <li><a href="pricing.html">Ph.D</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Research</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facilities<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog-item.html">Laboratories</a></li>
+                                <li><a href="pricing.html">Library</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shortcodes.html">Publications</a></li>
+                                <li><a href="blog-item.html">Projects</a></li>
+                                <li><a href="404.html">Seminars & Conf.'s</a></li>
+                                <li><a href="pricing.html">Tech. Talks</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.html">Placements</a></li> 
+                        <li><a href="contact-us.html">Contact</a></li>                        
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        
+    </header><!--/header-->
+
+
+    <section id="blog" class="container">
+        <div class="center" style="padding-bottom: 10px;">
+            <h2 align="left">Department of {{ Department.dept_name }}</h2>
+            <p class="lead" align="left">The department was selected by the Ministry of Communications and Information Technology as a node in the National endeavor on Technology Development for Indian Languages.</p>
+        </div>
+
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="col-sm-12 wow fadeInDown">
+                    <div class="accordion">
+                      <h2>NEWS & NOTIFICATIONS</h2>
+                      <div id = "accordion1" class="panel-group">  
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
+                                <i class="fa fa-angle-down pull-down"></i>
+                               <b> B.Tech </b>
+                              </a>
+                            </h3>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-II : </b></a><a href="#"><b> Semester III </b></a><a href="#"><b> Semester IV </b></a>
+                            </div>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-III : </b></a><a href="#"><b> Semester V </b></a><a href="#"><b> Semester VI </b></a>
+                            </div>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-IV : </b></a><a href="#"><b> Semester VII </b></a><a href="#"><b> Semester VIII </b></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
+                                <i class="fa fa-angle-down pull-down"></i>
+                               <b> M.Tech/IDD </b>
+                              </a>
+                            </h3>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-II : </b></a><a href="#"><b> Semester III </b></a><a href="#"><b> Semester IV </b></a>
+                            </div>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-III : </b></a><a href="#"><b> Semester V </b></a><a href="#"><b> Semester VI </b></a>
+                            </div>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-IV : </b></a><a href="#"><b> Semester VII </b></a><a href="#"><b> Semester VIII </b></a>
+                            </div>
+                          </div>
+                          <div id="collapseTwo1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                             <a href="#"><b> Part-V : </b></a><a href="#"><b> Semester IX </b></a><a href="#"><b> Semester X </b></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!--/#accordion1-->
+                    </div>
+                  </div>
+                  <div>
+                    <table style="height: 375px;" align="center" border="1" cellpadding="4" cellspacing="0" width="777">
+                      <tbody>
+                        <tr valign="top">
+                          <td colspan="3" width="661">
+                          <p><strong>Subjects</strong></p>
+                          </td>
+                          <td width="262">
+                          <p><strong>Contact Hrs Per Week</strong></p>
+                          <p><strong>L&amp;T P</strong></p>
+                          </td>
+                          <td width="105">
+                          <p><strong>Credits</strong></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" valign="top" width="1044">
+                          <p><strong>Theory</strong></p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>1.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2201</p>
+                          </td>
+                          <td width="355">Programming Languages</td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>3</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>2.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2202</p>
+                          </td>
+                          <td width="355">
+                          <p>Digital Circuits and Logic Design</p>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>3</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>3.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2203</p>
+                          </td>
+                          <td width="355">
+                          <p>Computer Organisation</p>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>3</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>4.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2204</p>
+                          </td>
+                          <td width="355">Design &amp; Analysis of algorithms</td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>3</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>5.</p>
+                          </td>
+                          <td width="183">
+                          <p>AM-2200A</p>
+                          </td>
+                          <td width="355">
+                          <p>Numerical Computation</p>
+                          </td>
+                          <td width="262">
+                          <p>4</p>
+                          </td>
+                          <td width="105">
+                          <p>4</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>6.</p>
+                          </td>
+                          <td width="183">EC-2200A<br>
+                          </td>
+                          <td width="355">Material Science<br>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>3</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>&nbsp;</p>
+                          </td>
+                          <td width="183">
+                          <p>&nbsp;</p>
+                          </td>
+                          <td width="355">
+                          <p><strong>Total of Theory</strong></p>
+                          </td>
+                          <td width="262">
+                          <p><strong>19</strong></p>
+                          </td>
+                          <td width="105">
+                          <p><strong>19</strong></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5" valign="top" width="1044">
+                          <p><strong>Practical</strong></p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>7.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2401</p>
+                          </td>
+                          <td width="355">
+                          <p>Programming Languages Lab</p>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>2</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>8.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2402</p>
+                          </td>
+                          <td width="355">
+                          <p>Digital Circuits Lab</p>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>2</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>9.</p>
+                          </td>
+                          <td width="183">
+                          <p>CS-2403</p>
+                          </td>
+                          <td width="355">
+                          <p>Software Project Lab</p>
+                          </td>
+                          <td width="262">
+                          <p>3</p>
+                          </td>
+                          <td width="105">
+                          <p>2</p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td width="106">
+                          <p>&nbsp;</p>
+                          </td>
+                          <td width="183">
+                          <p>&nbsp;</p>
+                          </td>
+                          <td width="355">
+                          <p><strong>Total of Practical</strong></p>
+                          </td>
+                          <td width="262">
+                          <p><strong>9</strong></p>
+                          </td>
+                          <td width="105">
+                          <p><strong>6</strong></p>
+                          </td>
+                        </tr>
+                        <tr valign="top">
+                          <td colspan="3" width="661">
+                          <p><strong>TOTAL OF SEMESTER</strong></p>
+                          </td>
+                          <td width="262">
+                          <p><strong>28</strong></p>
+                          </td>
+                          <td width="105">
+                          <p><strong>25</strong></p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div><!--/.col-md-8-->
+
+                <aside class="col-md-4">
+                    <div class="widget search">
+                        <form role="form">
+                                <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                        </form>
+                    </div><!--/.search-->
+            
+                     
+
+                    <div class="widget categories">
+                        <h3>Notifications</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="blog_category">
+                                    {% for notific in Notification %}
+                                        <li><a href="notification/{{ notific.slug }}">{{ notific.title }} <span class="badge">New</span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.categories-->
+            
+            <div class="widget archieve">
+                        <h3>Important Links</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="blog_archieve">
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Homepage </a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Central Library</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Main Library</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i>  IIT Gymkhana</a></li>
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.archieve-->
+            
+                    
+            
+            <div class="widget blog_gallery">
+                        <h3>Our Gallery</h3>
+                        <ul class="sidebar-gallery">
+                            <li><a href="#"><img src="/static/images/blog/gallery1.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery2.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery3.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery4.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery5.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery6.png" alt="" /></a></li>
+                        </ul>
+                    </div><!--/.blog_gallery-->
+              
+            
+                </aside>     
+
+            </div><!--/.row-->
+
+         </div><!--/.blog-->
+
+    </section><!--/#blog-->
+
+
+<section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Important Links</h3>
+                        <ul>
+                            <li><a href="http://bhu.ac.in/iitbhu/intranet/index.html">Intranet Portal</a></li>
+                            <li><a href="http://iitbhu.ac.in/antiragging/security.html"> IIT Proctorial Board</a></li>
+                            <li><a href="http://www.itbhu.ac.in/institute/calendar.html">Academic Calender</a></li>
+                            <li><a href="http://bhu.ac.in/kulgeet.htm" target="_new">Kulgeet</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                         <h3>BHU Links</h3>
+                        <ul>
+                            <li><a target="_blank" href="http://mail.google.com/a/itbhu.ac.in/"> Email Service </a></li>
+                            <li><a target="_blank" href="http://calendar.itbhu.ac.in/"> Calendar</a></li>
+                            <li><a href="http://iitbhu.ac.in/institute/notification/2015_holidays_IITBHU.pdf">List of Holidays </a></li>
+                            <li><a href="http://iitbhu.ac.in/iitnotifications/Rolling%20Advertishment%20-%2011.3.13.pdf"> Rolling Advt. for Faculty</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                      
+                         <h3>BHU Links</h3>
+                        <ul>
+                            <li><a href="http://www.iitbhu.ac.in/admissions/index.php/admission/phd.html"> PG Admissions 2015-16</a></li>
+                            <li><a href="http://iitbhu.ac.in/antiragging/">Anti-ragging @ IIT(BHU)</a></li></a></li>
+                            <li><a href="http://jeeadv.iitd.ac.in/">JEE(Advanced)</a></li>
+                            <li><a href="http://www.iitbhu.ac.in/admissions/index.php/ordinances.html"> UG & PG Ordinance</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                         <h3>BHU Links</h3>
+                        <ul>
+                            <li><a href="http://www.bhu.ac.in/proctor_office/" >Proctor Office</a></li>
+                            <li><a href="http://www.imsbhu.nic.in/hospital/index.htm" >Health Center</a></li>
+                            <li><a href="http://www.bhu.ac.in/bhulibrary/index.html">Central Library</a></li>
+                            <li><a href="http://www.bhu.ac.in/">BHU HOME PAGE </a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="#" title="Free Twitter Bootstrap WordPress Themes and HTML templates">IIT(BHU)</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/jquery.isotope.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/jquery.nicescroll.min.js"></script>
+    <script>
+        $(document).ready(
+            function() { 
+                $("html").niceScroll({autohidemode: "false", cursorwidth: 10, zindex: 1});
+            }
+        );
+
+    </script>
+    <script>
+        $(document).ready(
+            function() { 
+                $("#scrollbox3").niceScroll({autohidemode: "false", cursorwidth: 10});
+            }
+        );
+    </script>
+</body>
+</html>

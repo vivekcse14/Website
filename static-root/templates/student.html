@@ -1,0 +1,451 @@
+{% extends 'people_base.html' %}
+
+{% block title %}
+Students - {{ Department.dept_name }}
+{% endblock %}
+
+{% block people %} 
+<li class="active dropdown">
+{% endblock %}
+
+{% block courses %} 
+<li class="dropdown">
+{% endblock %}
+
+{% block table %}
+<div class="border-top">
+<div class="col-md-13 ">
+  <div class="col-sm-13 wow fadeInDown">
+	<div class="accordion">
+	  <div id = "accordion1" class="panel-group">  
+	  <h2 id="btech">List of B.Tech Students:</h2>
+	  	{% for year,title in "1234" %}
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{year}}">
+				<h3 class="panel-title">
+				<i class="fa fa-angle-down pull-down"></i>
+				   <b>{{title}}</b>
+				</h3>
+			    </a>
+		  </div>
+		  <div id="collapse{{i}}" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table style="height: 375px;" align="center" border="1" cellpadding="4" cellspacing="0" width="auto">
+				  <tbody>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>Subjects</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>Contact Hrs Per Week</strong></p>
+					  <p><strong>L&amp;T P</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>Credits</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Theory</strong></p>
+					  </td>
+					</tr>
+					{% for course in k %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>
+						{{course.course_code}}
+					  </p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+					
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Theory</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{o}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{n}}</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Practical</strong></p>
+					  </td>
+					</tr>
+					
+					{% for course in l %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>{{course.course_code}}</p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Practical</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{q}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{p}}</strong></p>
+					  </td>
+					</tr>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>TOTAL OF SEMESTER</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{s}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{r}}</strong></p>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		  </div>
+		</div>
+	  	{% endfor %}
+
+		<br>
+		<br>
+	  <h2 id="mtech">List of M.Tech/IDD Students:</h2>
+	  	{% for year in "12345" %}
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{i}}">
+				<h3 class="panel-title">
+				<i class="fa fa-angle-down pull-down"></i>
+				   <b>{{j}}</b>
+				</h3>
+			    </a>
+		  </div>
+		  <div id="collapse{{i}}" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table style="height: 375px;" align="center" border="1" cellpadding="4" cellspacing="0" width="auto">
+				  <tbody>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>Subjects</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>Contact Hrs Per Week</strong></p>
+					  <p><strong>L&amp;T P</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>Credits</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Theory</strong></p>
+					  </td>
+					</tr>
+					{% for course in k %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>
+						{{course.course_code}}
+					  </p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Theory</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{o}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{n}}</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Practical</strong></p>
+					  </td>
+					</tr>
+
+					{% for course in l %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>{{course.course_code}}</p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Practical</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{q}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{p}}</strong></p>
+					  </td>
+					</tr>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>TOTAL OF SEMESTER</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{s}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{r}}</strong></p>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		  </div>
+		</div>
+	  	{% endfor %}
+
+		<br>
+		<br>
+	    <h2 id="mtech">List of Ph.D Research Scholars:</h2>
+	  	<!-- {% for i in phd_list %} -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{i}}">
+				<h3 class="panel-title">
+				<i class="fa fa-angle-down pull-down"></i>
+				   <b>{{j}}</b>
+				</h3>
+			    </a>
+		  </div>
+		  <div id="collapse{{i}}" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table style="height: 375px;" align="center" border="1" cellpadding="4" cellspacing="0" width="auto">
+				  <tbody>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>Subjects</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>Contact Hrs Per Week</strong></p>
+					  <p><strong>L&amp;T P</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>Credits</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Theory</strong></p>
+					  </td>
+					</tr>
+					{% for course in k %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>
+						{{course.course_code}}
+					  </p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Theory</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{o}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{n}}</strong></p>
+					  </td>
+					</tr>
+					<tr>
+					<tr>
+					  <td colspan="5" valign="top" width="1044">
+					  <p><strong>Practical</strong></p>
+					  </td>
+					</tr>
+
+					{% for course in l %}
+					<tr valign="top">
+					  <td width="106">
+					  <p>{{forloop.counter}}.</p>
+					  </td>
+					  <td width="183">
+					  <p>{{course.course_code}}</p>
+					  </td>
+					  <td width="355">{{course.course_name}}</td>
+					  <td width="262">
+					  <p>{{course.contact_hours}}</p>
+					  </td>
+					  <td width="105">
+					  <p>{{course.credits}}</p>
+					  </td>
+					</tr>
+					{% endfor %}
+
+					<tr valign="top">
+					  <td width="106">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="183">
+					  <p>&nbsp;</p>
+					  </td>
+					  <td width="355">
+					  <p><strong>Total of Practical</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{q}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{p}}</strong></p>
+					  </td>
+					</tr>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <p><strong>TOTAL OF SEMESTER</strong></p>
+					  </td>
+					  <td width="262">
+					  <p><strong>{{s}}</strong></p>
+					  </td>
+					  <td width="105">
+					  <p><strong>{{r}}</strong></p>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		  </div>
+		</div>
+	  	{% endfor %}
+
+	  </div><!--/#accordion1-->
+	</div><!--/.accordion-->
+  </div><!--/.col-sm-13-->
+</div><!--/.col-md-13-->
+</div><!--/.border-top-->
+
+<table class="MsoNormalTable" style="border: medium none ; width: 510.35pt; margin-left: -30.05pt; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0" width="680">
+<!--     <table id="id_list_table" class="table">
+    </table>
+ -->              <tbody>
+                <tr style="">
+                  <td style="border: 1pt solid windowtext; padding: 0cm 5.4pt; width: 42.55pt; font-weight: bold;" valign="top" width="57"><big> </big>
+                  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">S. No.</span></big></p>
+                  <big> </big></td>
+                  <td style="border-style: solid solid solid none; border-color: windowtext windowtext windowtext -moz-use-text-color; border-width: 1pt 1pt 1pt medium; padding: 0cm 5.4pt; width: 77.95pt; font-weight: bold;" valign="top" width="104"><big> </big>
+                  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">Roll No.</span></big></p>
+                  <big> </big></td>
+                  <td style="border-style: solid solid solid none; border-color: windowtext windowtext windowtext -moz-use-text-color; border-width: 1pt 1pt 1pt medium; padding: 0cm 5.4pt; width: 5cm; font-weight: bold;" valign="top" width="189"><big> </big>
+                  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">Name of the Students</span></big></p>
+                  <big> </big></td>
+                </tr>
+                <tr style="">
+                  <td style="border-style: none solid solid; border-color: -moz-use-text-color windowtext windowtext; border-width: medium 1pt 1pt; padding: 0cm 5.4pt; width: 42.55pt;" valign="top" width="57">
+                  <div style="margin-left: 40px;"><big> </big></div>
+                  <p class="MsoListParagraph" style="margin-bottom: 0.0001pt; text-align: center; text-indent: -18pt; line-height: normal; margin-left: 40px;" align="center"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;"><span style="">1.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                  </span></span></span><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">&nbsp;</span></big></p>
+                  <div style="margin-left: 40px;"><big> </big><big> </big></div>
+                  </td>
+                  <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 1pt 1pt medium; padding: 0cm 5.4pt; width: 77.95pt;" valign="top" width="104"><big> </big>
+                  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">11100EN001</span></big></p>
+                  <big> </big></td>
+                  <td style="border-style: none solid solid none; border-color: -moz-use-text-color windowtext windowtext -moz-use-text-color; border-width: medium 1pt 1pt medium; padding: 0cm 5.4pt; width: 5cm;" valign="top" width="189"><big> </big>
+                  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><big><span style="font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">SrijanKhare</span></big></p>
+                  <big> </big></td>
+                </tr>
+               </tbody>
+            </table>
+{% endblock %}

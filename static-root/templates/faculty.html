@@ -1,0 +1,21 @@
+{% extends 'people_base.html' %}
+
+{% block title %}
+Faculty - {{ Department.dept_name }}
+{% endblock %}
+
+{% block people %} 
+<li class="active dropdown">
+{% endblock %}
+
+{% block courses %} 
+<li class="dropdown">
+{% endblock %}
+
+{% block table %}
+    <table id="id_list_table" class="table">
+        {% for faculty in Faculties  %}
+            <tr><td>{{ forloop.counter }}: {{ faculty }}</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
