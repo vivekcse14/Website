@@ -134,18 +134,13 @@ num = RegexValidator(r'^[0-9]*$','Only Integer values are allowed')
 tenDigitContact = RegexValidator(r'^\d{10,10}$','Enter a Valid 10 digit number.', 'Invalid number')
 emailValidation = RegexValidator(r'^[0-9_ a-z A-Z \-\.]+(@iitbhu\.ac\.in|@itbhu\.ac\.in)*$')
 INITIAL = 1
+
+
 class Department(models.Model):
     dept_code = models.CharField(unique=True, max_length = 2, primary_key = True, blank = False)
     dept_name = models.CharField(max_length = 50, blank=False, null=True)
-    hod_name = models.CharField(max_length = 50, blank = False)
-    hod_email = models.EmailField()
     contact1 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact2 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-
-    def save(self, *args, **kwargs):
-        if self.hod_email == "":
-            self.hod_email = None
-        super(Faculty,self).save(*args, **kwargs)
 
     def __unicode__(self):
         return smart_unicode(self.dept_code)+' : '+smart_unicode(self.dept_name)
@@ -161,12 +156,12 @@ class Faculty(models.Model):
     contact_off = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact_res = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact_other = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-    email_off = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation], error_messages = {'invalid':'Enter your Official Email-ID.'})
+    email_off = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation],
+                                  error_messages = {'invalid':'Enter your Official Email-ID.'})
     email_other = models.EmailField(unique = True,null = True, blank =True, default = None)
     #Available/Out of Station/On Leave
     status = models.CharField(max_length = 10, null = True, blank = True)
     faculty_id = models.CharField(unique=True, max_length =100, primary_key = True, editable = False)
-
 
     def save(self, *args, **kwargs):
         if not self.faculty_id:
@@ -198,7 +193,8 @@ class Student(models.Model):
     name = models.CharField(max_length = 50, null = False, blank = False)
     year_of_admission = models.IntegerField(null = False, blank = False, default = 0, editable = False)
     degree = models.IntegerField(choices = DEGREE, default = 1)
-    email = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation], error_messages = {'invalid':'Enter your Official Email-ID.'})
+    email = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation],
+                              error_messages = {'invalid':'Enter your Official Email-ID.'})
     dept = models.ForeignKey(Department)
 
     def save(self,*args,**kwargs):
@@ -236,6 +232,45 @@ class Staff(models.Model):
 
     def __unicode__(self):
         return smart_unicode(self.name)+' : '+smart_unicode(self.email)
+
+
+class Groups(models.Model):
+    name = models.CharField(max_length=50, blank=False, null=False)
+    short = models.CharField(max_length=10, unique=True, blank=False, null=False)
+    description = models.CharField(max_length=250, blank=True, null=True)
+
+    def __unicode__(self):
+        return smart_unicode(self.short) + ' : ' + smart_unicode(self.name)
+
+
+class Post(models.Model):
+    PEOPLE = {
+            ('1','Faculty'),
+            ('2','Student'),
+            ('3','Staff'),
+            ('4','Others'),
+    }
+    name = models.CharField(max_length=50)
+    group = models.ForeignKey(Groups)
+    post_hold_by = models.CharField(max_length=5, choices=PEOPLE)
+
+    def __unicode__(self):
+        return smart_unicode(self.name) + " : " + smart_unicode(self.group)
+
+
+class StudentsPost(models.Model):
+    post = models.ForeignKey(Post)
+    roll_no = models.CharField(max_length = 20, blank = False, validators=[alphanum])
+
+
+class FacultiesPost(models.Model):
+    post = models.ForeignKey(Post)
+    dept = models.ForeignKey(Department)
+    faculty = models.ForeignKey(Faculty)
+
+class StaffsPost(models.Model):
+    post = models.ForeignKey(Post)
+    employee_id = models.CharField(max_length = 20, blank = False, validators=[alphanum])
 
 
 class Notification(models.Model):
@@ -365,13 +400,14 @@ class TenderDoc(models.Model):
     def __unicode__(self):
         return smart_unicode(self.tender_name)
 
-
+"""
 class Committee(models.Model):
     comm_id = models.IntegerField(primary_key = True, blank = False)
     comm_related_to = models.CharField(max_length = 100, null = True, blank = True)
 
     def __unicode__(self):
         return smart_unicode(self.comm_related_to)
+"""
 
 
 class CommDetail(models.Model):
@@ -394,7 +430,8 @@ class AdminOfficial(models.Model):
     contact_off = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact_res = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact_other = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-    email_off = models.EmailField(unique = True, null = True, blank = True, validators = [emailValidation], error_messages = {'invalid':'Enter your Official Email-ID.'})
+    email_off = models.EmailField(unique = True, null = True, blank = True, validators = [emailValidation],
+                                  error_messages = {'invalid':'Enter your Official Email-ID.'})
     email_other = models.EmailField(unique = True, null = True, blank = True)
     fax = models.IntegerField(null = True, blank = True)
 
@@ -416,7 +453,7 @@ class BoardOfGovernor(models.Model):
     def __unicode__(self):
         return smart_unicode(self.level)+' : '+smart_unicode(self.name)+' : '+smart_unicode(self.rank)
 
-
+"""
 class HostelAdmin(models.Model):
     hostel = models.CharField(max_length = 100, null = True, blank = True)
     admin_war = models.CharField(max_length = 100, null = True, blank = True)
@@ -439,6 +476,7 @@ class HostelAdmin(models.Model):
 
     def __unicode__(self):
         return smart_unicode(self.hostel)
+"""
 
 class Security(models.Model):
     name = models.CharField(max_length =100, null =  True , blank = True)
@@ -449,8 +487,8 @@ class Security(models.Model):
         return smart_unicode(self.name)
 
 class HeadOfDepartments(models.Model):
-    department = models.CharField(null = True , blank = True , max_length = 100)
-    name = models.CharField(null = True , blank = True , max_length = 100)
+    department = models.ForeignKey(Department , blank=False)
+    name = models.ForeignKey(Faculty)
     
     def __unicode__(self):
         return smart_unicode(self.department)
@@ -483,7 +521,7 @@ class Circulars(models.Model):
     
     def __unicode__(self):
         return smart_unicode(self.title)
-    
+"""
 class Wmes(models.Model):
     desig = models.CharField(max_length = 100 ,blank =True)
     name  = models.CharField(max_length = 100 , blank =False , null = False)
@@ -495,7 +533,7 @@ class Wmes(models.Model):
     
     def __unicode__(self):
         return smart_unicode(self.name)    
-    
+"""
 
 class NewsBoard(models.Model):
     news_of = models.CharField(max_length = 20 , blank = False , null = False)
@@ -617,7 +655,7 @@ class RankList(models.Model):
     def __unicode__(self):
         return smart_unicode(self.rank_name)
 
-
+"""
 class History(models.Model):
     rank_id = models.ForeignKey(RankList)
     name = models.CharField(max_length = 100, null = True, blank = True)
@@ -627,4 +665,4 @@ class History(models.Model):
 
     def __unicode__(self):
         return smart_unicode(self.name)
-
+"""
