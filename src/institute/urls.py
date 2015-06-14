@@ -17,5 +17,7 @@ urlpatterns = patterns('',
 	url(r'^notification/$',views.notification_all,name = 'index_notific'),
 	url(r'^department/(?P<dept_code>[\w\-]+)/notification/$',views.notification_all, name = 'dept_notific'),
     url(r'^notification/(?P<notif_title_slug>[\w\-]+)/$',views.notification,name = 'notification'),
-    url(r'^department/(?P<dept_code>[\w\-]+)/notification/(?P<notif_title_slug>[\w\-]+)/$',views.notification, name = 'dept_notific_view'),
+    url(r'^department/(?P<dept_code>[\w\-]+)/notification/(?P<notif_title_slug>[\w\-]+)/$',views.notification,
+            name = 'dept_notific_view'),
+    url(r'^antiragging/$',views.antiragging,name = 'antiragging'),
 	)

@@ -443,8 +443,8 @@ def committee_view(request):
     return render(request, 'com_view.html',context_dict)
 
 
-def antiragging(request, dept_code):
-    return render(request,'antirag.html')
+def antiragging(request):
+    return render(request,'antiragging.html')
 
 
 def gallery(request):
