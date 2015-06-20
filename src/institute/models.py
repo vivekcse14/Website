@@ -424,6 +424,7 @@ class CommDetail(models.Model):
 
 class AdminOfficial(models.Model):
     rank_id = models.IntegerField(null = False, blank = False)
+    rank_name = models.CharField(null = False , blank = False ,max_length = 100 )
     name = models.CharField(max_length = 100, null = True, blank = True)
     rank_area = models.CharField(max_length = 100 , blank = True)
     qualification = models.CharField(max_length = 100, null = True, blank = True)
@@ -445,10 +446,11 @@ class AdminOfficial(models.Model):
 
 
 class BoardOfGovernor(models.Model):
-    level = models.CharField(max_length = 100, null = True, blank = True)
+    position = models.CharField(max_length = 100, null = True, blank = True)
     name = models.CharField(max_length = 100, null = True, blank = True)
     rank = models.CharField(max_length = 100, null = True, blank = True)
     address = models.CharField(max_length = 100, null = True, blank = True)
+    nominated_by = models.CharField(max_length = 100)
 
     def __unicode__(self):
         return smart_unicode(self.level)+' : '+smart_unicode(self.name)+' : '+smart_unicode(self.rank)

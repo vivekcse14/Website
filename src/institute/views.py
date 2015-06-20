@@ -415,6 +415,14 @@ def administration(request):
         raise Http404
     return render(request,'administration.html',context_dict)
 
+def adminis_view(request,rank):
+    try:
+        members = AdminOfficials.objects.filter(rank_name=rank)
+        context_dict['official'] = members
+    except:
+        raise Http404
+    return render(request,'administration_view.html',context_dict) 
+
 
 def boardofgovernors(request):  
     try:
@@ -422,7 +430,7 @@ def boardofgovernors(request):
         context_dict['Board_mem'] = board
     except:
         raise Http404
-    return render(request,'board.html',context_dict)
+    return render(request,'boofgov.html',context_dict)
 
 
 def committee(request):
