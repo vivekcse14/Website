@@ -28,7 +28,7 @@
 
 <body>
 
-   <header id="header">
+    <header id="header">
         <div class="top-bar">
             <div class="container">
                 <div class="row">
@@ -73,11 +73,11 @@
                     </button>
                     <a class="navbar-brand" href='{% url "home" %}'><img src="/static/images/logo.jpg" alt="logo" width="250px"></a>
                 </div>
-
+                
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li><a href="/department/cse">Home</a></li>
-                            <li class="dropdown">
+                       {% block people %}{% endblock %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">People<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'faculty' Department.dept_code %}">Faculty</a></li>
@@ -87,8 +87,8 @@
                                 <li><a href="{% url 'alumni' Department.dept_code %}">Alumni</a></li>
                             </ul>
                         </li>
-                        <li><a href="{% url 'dept_admission' Department.dept_code %}">Admission</a></li>
-                        <li class="dropdown">
+                        {% block admission %}{% endblock %}<a href="{% url 'dept_admission' Department.dept_code %}">Admission</a></li>
+                        {% block courses %}{% endblock %}
                             <a href="{% url 'course' Department.dept_code %}" class="dropdown-toggle" data-toggle="dropdown">Courses<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'course' Department.dept_code %}#">B.Tech</a></li>
@@ -96,15 +96,15 @@
                                 <li><a href="{% url 'course' Department.dept_code %}#phd">Ph.D</a></li>
                             </ul>
                         </li>
-                        <li><a href="{% url 'research' Department.dept_code %}">Research</a></li>
-                        <li class="dropdown">
+                        {% block research %}{% endblock %}<a href="{% url 'research' Department.dept_code %}">Research</a></li>
+                        {% block facilities %}{% endblock %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facilities<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'lab' Department.dept_code %}">Laboratories</a></li>
                                 <li><a href="{% url 'library' Department.dept_code %}">Library</a></li>
                             </ul>
                         </li>
-                            {% block activities %}{% endblock %}
+                        {% block activities %}{% endblock %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'publication' Department.dept_code %}">Publications</a></li>
@@ -113,8 +113,8 @@
                                 <li><a href="{% url 'talk' Department.dept_code %}">Tech. Talks</a></li>
                             </ul>
                         </li>
-                        <li><a href="{% url 'placement' Department.dept_code %}">Placements</a></li> 
-                        <li><a href="{% url 'contact' Department.dept_code %}">Contact</a></li>                        
+                        {% block placements %}{% endblock %}<a href="{% url 'placement' Department.dept_code %}">Placements</a></li> 
+                        {% block contact %}{% endblock %}<a href="{% url 'contact' Department.dept_code %}">Contact</a></li>                        
                     </ul>
                 </div>
             </div><!--/.container-->
@@ -126,24 +126,82 @@
         <div class="center" style="padding-bottom: 10px;">
             <h2 align="left">Department of {{ Department.dept_name }}</h2>
         </div>
+
         <div class="blog">
-            <div class="border-top">
-                <div class="row">
-                    <div class="col-md-8 ">
+            <div class="row">
+                <div class="col-md-8 ">
+                    <div class="border-top">
                         <div class="col-md-13 ">
                             <div class="col-sm-13 wow fadeInDown">
 
-                            {% block body %}
-                            {% endblock %}
-                        
+                        {% block table %}
+                        {% endblock %}
+                        {% block body %}
+                        {% endblock %}
+
                             </div><!--/.col-sm-13-->
                         </div><!--/.col-md-13-->
-                    </div><!--/.col-md-8-->
-                </div><!--/.row-->
-            </div><!--/.border-top-->
-         </div><!--/.blog-->
-    </section><!--/#blog-->
+                    </div><!--/.border-top-->
+                </div><!--/.col-md-8-->
 
+                <aside class="col-md-4">
+                    <div class="widget search">
+                        <form role="form">
+                                <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                        </form>
+                    </div><!--/.search-->
+                    
+                     
+
+                    <div class="widget categories">
+                        <h3>Notifications</h3>
+                        <div class="row">
+                            <div class="col-sm-14">
+                                <ul class="blog_category">
+                                    {% for notific in Notification %}
+                                        <li><a href="/department/{{Department.dept_code}}/notification/{{ notific.slug }}">{{ notific.title }} {% if notific.quality %}<span class="badge">New</span>{% endif %}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.categories-->
+                    
+                    <div class="widget archieve">
+                        <h3>Important Links</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="blog_archieve">
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Homepage </a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Central Library</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> Main Library</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-double-right"></i>  IIT Gymkhana</a></li>
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.archieve-->
+                    
+                    
+                    
+                    <div class="widget blog_gallery">
+                        <h3>Our Gallery</h3>
+                        <ul class="sidebar-gallery">
+                            <li><a href="#"><img src="/static/images/blog/gallery1.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery2.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery3.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery4.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery5.png" alt="" /></a></li>
+                            <li><a href="#"><img src="/static/images/blog/gallery6.png" alt="" /></a></li>
+                        </ul>
+                    </div><!--/.blog_gallery-->
+                        
+                    
+                </aside>     
+
+            </div><!--/.row-->
+
+         </div><!--/.blog-->
+
+    </section><!--/#blog-->
 
 
     <section id="bottom">
