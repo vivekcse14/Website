@@ -32,12 +32,38 @@ Research - {{ Department.dept_name }}
 <li>
 {% endblock %}
 
+{% block contact %} 
+<li>
+{% endblock %}
+
+
 {% block table %}
-<div class="border-top">
-<div class="col-md-13 ">
-  <div class="col-sm-13 wow fadeInDown">
 	<div class="accordion">
 	  <div id = "accordion1" class="panel-group">  
+	  <h2>Research Areas:</h2>
+	  <div style="background:#f5f5f5; padding-right:20px;">
+	  	<ul>
+	  		<br>
+			<li>Artificial Intelligence, Neural Networks</li>
+			<li>Database System, Data Mining, Web Mining, Social Networks</li>
+			<li>Parallel/Distributed Computing  </li>
+			<li>Software Engineering, Software Reengineering</li>
+			<li>Multiagent Systems, Semantic Web, Robotics</li>
+			<li>Image Processing, Computer Vision, Biomedical Imaging</li>
+			<li>Biometrics, Pattern Classification, Video Processing</li>
+			<li>Computational Aspects of Bioinformatics Algorithms</li>
+			<li>Design and Analysis of Algorithms</li>
+			<li>High Performance Computing</li>
+			<li>E-Learning Technologies</li>
+			<li>Information Extraction, Text Summarization</li>
+			<li>Natural Language Processing</li>
+			<li>Information Retrieval</li>
+			<li>Computational Liguistics</li>
+			<li>Other related areas and their applications.</li>
+			<br>
+	  	</ul>
+	  </div>	  
+	  <br><br>
 	  <h2>Ph.D Research Guidance:</h2>
 	  	{% for supervisor,names in full_list %}
 		<div class="panel panel-default">
@@ -61,7 +87,7 @@ Research - {{ Department.dept_name }}
 					  <p><strong>Student</strong></p>
 					  </td>
 					  <td colspan="3" width="671">
-					  <p><strong>Topic</strong></p>
+					  <p><strong>Research Topic</strong></p>
 					  </td>
 					  <td width="105">
 					  <p><strong>Status</strong></p>
@@ -93,8 +119,5 @@ Research - {{ Department.dept_name }}
 
 	  </div><!--/#accordion1-->
 	</div><!--/.accordion-->
-  </div><!--/.col-sm-13-->
-</div><!--/.col-md-13-->
-</div><!--/.border-top-->
   
 {% endblock %}

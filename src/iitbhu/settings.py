@@ -25,7 +25,7 @@ SECRET_KEY = '&dc%owme4s%=vzs78qj+ni^lpx8w1x-6o741r12g5xnffw8=xh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['loopback']
 
 
 # Application definition

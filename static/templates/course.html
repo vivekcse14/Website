@@ -32,10 +32,12 @@ Courses - {{ Department.dept_name }}
 <li>
 {% endblock %}
 
+{% block contact %} 
+<li>
+{% endblock %}
+
+
 {% block table %}
-<div class="border-top">
-<div class="col-md-13 ">
-  <div class="col-sm-13 wow fadeInDown">
 	<div class="accordion">
 	  <div id = "accordion1" class="panel-group">  
 	  <h2 id="btech">B.Tech Course Structure:</h2>
@@ -301,8 +303,5 @@ Courses - {{ Department.dept_name }}
 
 	  </div><!--/#accordion1-->
 	</div><!--/.accordion-->
-  </div><!--/.col-sm-13-->
-</div><!--/.col-md-13-->
-</div><!--/.border-top-->
   
 {% endblock %}

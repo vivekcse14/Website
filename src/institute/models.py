@@ -150,7 +150,7 @@ class Faculty(models.Model):
     name = models.CharField(max_length = 50, blank = False)
     dept = models.ForeignKey(Department, blank=False)
     photo = models.ImageField(upload_to = __get_path_faculty__, default = 'null')
-    designation = models.CharField(max_length = 20, null = True, blank = True)
+    designation = models.CharField(max_length = 50, null = True, blank = True)
     qualification = models.CharField(max_length = 100, null = True, blank = True)
     area_of_interest = models.CharField(max_length = 100, null = True, blank = True)
     contact_off = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
@@ -222,13 +222,8 @@ class PhdResearch(models.Model):
 class Staff(models.Model):
     name = models.CharField(max_length = 50, null = False, blank = False)
     dept = models.ForeignKey(Department, null = False, blank = False)
-    designation = models.CharField(max_length = 20, null = False, blank = False)
-    email = models.EmailField()
-
-    def save(self, *args, **kwargs):
-        if self.email == "":
-            self.email = None
-        super(Faculty,self).save(*args, **kwargs)
+    designation = models.CharField(max_length = 50, null = False, blank = False)
+    email = models.EmailField(null = True, blank = True)
 
     def __unicode__(self):
         return smart_unicode(self.name)+' : '+smart_unicode(self.email)

@@ -79,50 +79,6 @@ def faculty(request,dept_code):
         raise Http404
     return render(request,'faculty.html',context_dict)
  
-    
-def placement(request, dept_code):
-    dept_code1 = dept_code[:2].upper()
-    try:
-        dept = Department.objects.get(dept_code = dept_code1)
-        context_dict['Department'] = dept
-    except:
-        raise Http404
-    return render(request,'placement.html',context_dict)
-
-
-def research(request, dept_code):
-    dept_code1 = dept_code[:2].upper()
-    try:
-        dept = Department.objects.get(dept_code = dept_code1)
-        context_dict['Department'] = dept
-    except:
-        raise Http404
-    try:
-        supervisors = PhdResearch.objects.filter(dept = dept_code1).values('supervisor')
-
-        sv_list = list()
-        for i in supervisors: sv_list.append(i['supervisor'])
-        sv_list = list(OrderedDict.fromkeys(sv_list))
-
-        counter = list()
-        num = "0"
-        for i in sv_list:
-            counter.append(num)
-            num = str(int(num)+1)
-
-        z = zip(sv_list,counter)
-        names = list()
-        for i,j in z:
-            print i,j
-            s = "sv"+j
-            context_dict[s] = PhdResearch.objects.filter(dept = dept_code1, supervisor = i)
-            names.append(context_dict[s])
-
-        full_list = izip_longest(sv_list, names)
-        context_dict['full_list'] = full_list
-    except:
-        raise Http404        
-    return render(request,'research.html',context_dict)
 
 
 def student(request,dept_code):
@@ -208,49 +164,46 @@ def phd(request, dept_code):
 def staff(request, dept_code):
     dept_code1 = dept_code[:2].upper()
     try:
-        staffs = Students.objects.get(dept=dept_code1)
-        context_dict['stf'] = staffs
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    try:
+        staffs = Staff.objects.filter(dept = dept_code1)
+        context_dict['staff'] = staffs
     except:
         raise Http404
     return render(request,'staff.html',context_dict)
 
 
-def notification_all(request, dept_code=None):
-    context_dict['slug'] = None
-    if dept_code:
-        dept_code1 = dept_code[:2].upper()
-        try:
-            dept = Department.objects.get(dept_code = dept_code1)
-            context_dict['Department'] = dept
-        except:
-            raise Http404
-        try:
-            notification = Notification.objects.filter(notif_of=dept_code1)
-            context_dict['notifications'] = notification
-        except:
-            raise Http404
-        return render(request,'dept_notification.html',context_dict)
-    else:
-        try:
-            notification = Notification.objects.filter(notif_of = "Institute")
-            context_dict['notifications'] = notification
-        except:
-            raise Http404
-        context_dict['slug'] = None
-        return render(request,'notification.html',context_dict)
- 
-
-def notification(request,notif_title_slug, dept_code=None):
-    context_dict['slug'] = notif_title_slug
+def visitor(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
     try:
-        notification = Notification.objects.filter(slug=notif_title_slug)
-        context_dict['notification'] = notification
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
     except:
         raise Http404
-    if dept_code:
-        return render(request,'dept_notification.html',context_dict)
-    else:
-        return render(request,'notification.html',context_dict)
+    return render(request,'visitor.html',context_dict)
+
+    
+def alumni(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'alumni.html',context_dict)
+
+    
+def dept_admission(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'dept_admission.html',context_dict)
 
 
 def course(request, dept_code):
@@ -335,7 +288,7 @@ def course(request, dept_code):
         
         collapse_num    = [ 0,1,2,3,4,5 ]
         sem_title_btech = [ "Part - II : Semester III",
-                            "Part - II : Semester IV",
+                            "Part - II  : Semester IV",
                             "Part - III : Semester V",
                             "Part - III : Semester VI",
                             "Part - IV : Semester VII",
@@ -406,6 +359,160 @@ def course(request, dept_code):
     except:
         raise Http404
     return render (request,'course.html', context_dict)
+
+
+def research(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    try:
+        supervisors = PhdResearch.objects.filter(dept = dept_code1).values('supervisor')
+
+        sv_list = list()
+        for i in supervisors: sv_list.append(i['supervisor'])
+        sv_list = list(OrderedDict.fromkeys(sv_list))
+
+        counter = list()
+        num = "0"
+        for i in sv_list:
+            counter.append(num)
+            num = str(int(num)+1)
+
+        z = zip(sv_list,counter)
+        names = list()
+        for i,j in z:
+            print i,j
+            s = "sv"+j
+            context_dict[s] = PhdResearch.objects.filter(dept = dept_code1, supervisor = i)
+            names.append(context_dict[s])
+
+        full_list = izip_longest(sv_list, names)
+        context_dict['full_list'] = full_list
+    except:
+        raise Http404        
+    return render(request,'research.html',context_dict)
+
+
+def publication(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'publication.html',context_dict)
+
+
+def project(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'project.html',context_dict)
+
+
+def seminar(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'seminar.html',context_dict)
+
+
+def talk(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'talk.html',context_dict)
+
+
+def library(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'library.html',context_dict)
+
+
+def lab(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'lab.html',context_dict)
+
+
+def placement(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'placement.html',context_dict)
+
+
+def contact(request, dept_code):
+    dept_code1 = dept_code[:2].upper()
+    try:
+        dept = Department.objects.get(dept_code = dept_code1)
+        context_dict['Department'] = dept
+    except:
+        raise Http404
+    return render(request,'contact.html',context_dict)
+
+
+def notification_all(request, dept_code=None):
+    context_dict['slug'] = None
+    if dept_code:
+        dept_code1 = dept_code[:2].upper()
+        try:
+            dept = Department.objects.get(dept_code = dept_code1)
+            context_dict['Department'] = dept
+        except:
+            raise Http404
+        try:
+            notification = Notification.objects.filter(notif_of=dept_code1)
+            context_dict['notifications'] = notification
+        except:
+            raise Http404
+        return render(request,'dept_notification.html',context_dict)
+    else:
+        try:
+            notification = Notification.objects.filter(notif_of = "Institute")
+            context_dict['notifications'] = notification
+        except:
+            raise Http404
+        context_dict['slug'] = None
+        return render(request,'notification.html',context_dict)
+ 
+
+def notification(request,notif_title_slug, dept_code=None):
+    context_dict['slug'] = notif_title_slug
+    try:
+        notification = Notification.objects.filter(slug=notif_title_slug)
+        context_dict['notification'] = notification
+    except:
+        raise Http404
+    if dept_code:
+        return render(request,'dept_notification.html',context_dict)
+    else:
+        return render(request,'notification.html',context_dict)
+
 
 def administration(request):
     try:
