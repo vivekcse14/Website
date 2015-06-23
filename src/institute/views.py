@@ -361,6 +361,20 @@ def course(request, dept_code):
     return render (request,'course.html', context_dict)
 
 
+def boardofgovernors(request):  
+    try:
+        board = BoardOfGovernor.objects.get().order_by(level_id)
+        context_dict['Board_mem'] = board
+        rank_title = ["Chairman",
+                      "Director(Ex-officio)Member",
+                      "Members",
+                      "Secretary",
+                      ]
+        context_dict[ranklist] = rank_title; 
+    except:
+        raise Http404
+    return render(request,'boofgov.html',context_dict)
+
 def research(request, dept_code):
     dept_code1 = dept_code[:2].upper()
     try:
@@ -529,15 +543,6 @@ def adminis_view(request,rank):
     except:
         raise Http404
     return render(request,'administration_view.html',context_dict) 
-
-
-def boardofgovernors(request):  
-    try:
-        board = BoardOfGovernor.objects.get().order_by(level_id)
-        context_dict['Board_mem'] = board
-    except:
-        raise Http404
-    return render(request,'boofgov.html',context_dict)
 
 
 def committee(request):

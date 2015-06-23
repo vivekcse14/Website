@@ -1,11 +1,11 @@
-{% extends 'people_base.html' %}
+{% extends 'dept_base.html' %}
 
 {% block title %}
-Faculty - {{ Department.dept_name }}
+Courses - {{ Department.dept_name }}
 {% endblock %}
 
 {% block people %} 
-<li class="active dropdown">
+<li class="dropdown">
 {% endblock %}
 
 {% block admission %} 
@@ -13,7 +13,7 @@ Faculty - {{ Department.dept_name }}
 {% endblock %}
 
 {% block courses %} 
-<li class="dropdown">
+<li class="active dropdown">
 {% endblock %}
 
 {% block research %} 
@@ -32,14 +32,75 @@ Faculty - {{ Department.dept_name }}
 <li>
 {% endblock %}
 
-{% block table %}
-    <table id="id_list_table" class="table">
-        {% for members in Boar_mem  %}
-            <tr><td> {{ members.position }}</td></tr>
-            <tr><td> {{ members.name }}</td></tr>
-            <tr><td> {{ members.rank }}</td></tr>
-            <tr><td> {{ members.address }}</td></tr>
-            <tr><td> {{ members.nominated_by }}</td></tr>
-    </table>
+{% block contact %} 
+<li>
 {% endblock %}
 
+
+{% block table %}
+	<div class="accordion">
+	  <div id = "accordion1" class="panel-group">  
+	  <h2 id="btech">Board Of Governors</h2>
+	  	{% for i in ranklist %}
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{i}}">
+				<h3 class="panel-title">
+				<i class="fa fa-angle-down pull-down"></i>
+				   <b>{{i}}</b>
+				</h3>
+			    </a>
+		  </div>
+		  
+		  <div id="collapse{{i}}" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table style="height: 250px;" align="center" border="1" cellpadding="4" cellspacing="0" width="auto">
+				  <tbody>
+					<tr valign="top">
+					  <td colspan="3" width="661">
+					  <center>
+                      <b> Name and Address</b>
+                      </center>
+					  </td>
+					  <td width="122">
+					  <center>
+                      <b> Position</b>
+                      </center>
+					  
+					  </td>
+					  <td width="122">
+					 <center>
+                      <b> Tenure</b>
+                      </center>
+					  </td>
+                      </td>
+					  <td width="123">
+					  <center>
+                      <b> Nominated by</b>
+                      </center>
+					  </td>
+					</tr>
+                    {% for i in board_mem %}
+                        {% if i.rank = {{i}} %}
+                            <tr>
+                            <td colspan =3 width = "661">
+                            <b><strong>{{i.name}}</strong></b>
+                            <b>{{i.address}}</strong></b>
+                            </td>
+                            
+                            <td width = "122">
+                            <b>{{i.position}}</b>
+                            </td>
+                            
+                            <td width = "122">
+                            <b>{{i.tenure}}</b>
+                            </td>
+                            <td width = "123">
+                            <b>{{i.nominate_by}}</b>
+                            </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                                
+
+{% endblock %}
