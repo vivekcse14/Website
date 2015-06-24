@@ -1,0 +1,54 @@
+{% extends 'dept_base.html' %}
+
+{% block title %}
+Faculty - {{ Department.dept_name }}
+{% endblock %}
+
+{% block people %} 
+<li class="active dropdown">
+{% endblock %}
+
+{% block admission %} 
+<li>
+{% endblock %}
+
+{% block courses %} 
+<li class="dropdown">
+{% endblock %}
+
+{% block research %} 
+<li>
+{% endblock %}
+
+{% block facilities %} 
+<li class="dropdown">
+{% endblock %}
+
+{% block activities %} 
+<li class="dropdown">
+{% endblock %}
+
+{% block placements %} 
+<li>
+{% endblock %}
+
+{% block contact %} 
+<li>
+{% endblock %}
+
+
+{% block table %}
+    <h2>Faculty:</h2>
+    <table id="id_list_table" class="table">
+        {% for faculty in Faculties  %}
+            <tr><td>{{ forloop.counter }}: <img src="/media/{{ faculty.photo }}" height="320px" width="280px"></td></tr>
+            <tr><td> {{ faculty.name }}</td></tr>
+            <tr><td>Designation: {{ faculty.designation }}</td></tr>
+            <tr><td>Qualification: {{ faculty.qualification }}</td></tr>
+            <tr><td>Area of Interest: {{ faculty.area_of_interest }}</td></tr>
+            <tr><td>Contact: {% if faculty.contact_off %}+91{{ faculty.contact_off }} (O){% endif %}{% if faculty.contact_res %}, +91{{ faculty.contact_res }} (Res){% endif %}{% if faculty.contact_other %}, +91{{ faculty.contact_other }}{% endif %}</td></tr>
+            <tr><td>E-mail: {{ faculty.email_off }} (O){% if faculty.email_other %}, {{ faculty.email_other }} {% endif %}</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
