@@ -38,6 +38,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'institute',
+    'ce',
+    'ch',
+    'cr',
+    'cs',
+    'ec',
+    'ee',
+    'me',
+    'mn',
+    'mt',
+    'ph',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +66,21 @@ ROOT_URLCONF = 'iitbhu.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates')],
+        'DIRS': [
+                    os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates'),
+                    os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','institute'),
+                    os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','dept'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','ce'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','ch'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','cr'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','cs'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','ec'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','ee'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','me'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','mn'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','mt'),
+                    # os.path.join(os.path.dirname(BASE_DIR), 'static', 'templates','ph')
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

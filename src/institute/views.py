@@ -57,11 +57,11 @@ def department(request, dept_code):
                 
         except:
             pass
-       
+        html = dept_code1+'/home.html'
     except:
         raise Http404
 
-    return  render(request, 'department.html', context_dict)
+    return  render(request, html, context_dict)
 
 
 def faculty(request,dept_code):
@@ -417,7 +417,7 @@ def publication(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    return render(request,'publication.html',context_dict)
+    return render(request,'dept_publications.html',context_dict)
 
 
 def project(request, dept_code):
