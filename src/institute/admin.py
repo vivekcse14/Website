@@ -26,6 +26,7 @@ class instituteAdmin(admin.ModelAdmin):
         #model = History
         model = TenderDoc
         model = PhdResearch
+        model = Phd
 
 
 class HeadOfDepartmentAdmin(admin.ModelAdmin):
@@ -40,19 +41,39 @@ class NotificationAdmin(admin.ModelAdmin):
 
 class DepartmentHomepage(admin.ModelAdmin):
     fieldsets = [
-        (None,  {'fields' : ('dept_code', 'dept_name')}),
-        ('Contact Details',     {'fields' : ('contact1', 'contact2')}),
-        ('Courses Offered',      {'fields' : (('b_tech', 'idd', 'm_tech', 'ph_d'),)}),
-        ('Homepage Content',     {'fields' : ('dept_heading', 'about')})
+        (None,                  {'fields': ('dept_code', 'dept_name')}),
+        ('Contact Details',     {'fields': ('contact1', 'contact2')}),
+        ('Courses Offered',      {'fields': (('b_tech', 'idd', 'm_tech', 'ph_d'),)}),
+        ('Homepage Content',     {'fields': ('dept_heading', 'about')})
     ]
 
-        
+
+class FacultyAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,              {'fields': ('dept', )}),
+        ('Personal Detail', {'fields': (('name', 'photo'), ('designation',), ('qualification', 'area_of_interest'),)}),
+        ('Contact Details', {'fields': (('contact_off', 'contact_res', 'contact_other'),
+                                          ('email_off', 'email_other'),)}),
+        (None,              {'fields': ('status',)})
+    ]
+    list_filter = ['dept']
+
+class CourseAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Course detail',   {'fields': (('course_id','course_code'), 'sem', 'course_name', ('credits', 'contact_hours'),
+                            'type', ('b_tech', 'idd', 'm_tech', 'ph_d'), ('dept', 'course_offered_by'))})
+    ]
+
+
+class DepartmentFilter(admin.ModelAdmin):
+    list_filter = ['dept']
+
 admin.site.register(Department, DepartmentHomepage)
-admin.site.register(Faculty, instituteAdmin)
+admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Student)
-admin.site.register(Staff, instituteAdmin)
+admin.site.register(Staff, DepartmentFilter)
 admin.site.register(Notification, NotificationAdmin)
-admin.site.register(Course, instituteAdmin)
+admin.site.register(Course, CourseAdmin)
 admin.site.register(Gallery, instituteAdmin)
 admin.site.register(Image, instituteAdmin)
 admin.site.register(SeminarsConf, instituteAdmin)
@@ -77,6 +98,7 @@ admin.site.register(RightToInformation,instituteAdmin)
 admin.site.register(Calendar,instituteAdmin)
 admin.site.register(Circulars,instituteAdmin)
 #admin.site.register(Wmes,instituteAdmin)
-admin.site.register(NewsBoard,instituteAdmin)
-admin.site.register(PhdResearch,instituteAdmin)
+admin.site.register(NewsBoard, instituteAdmin)
+admin.site.register(PhdResearch, DepartmentFilter)
+admin.site.register(Phd, DepartmentFilter)
 

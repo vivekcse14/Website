@@ -155,16 +155,18 @@ class Department(models.Model):
 
 class Faculty(models.Model):
     name = models.CharField(max_length = 50, blank = False)
-    dept = models.ForeignKey(Department, blank=False)
+    dept = models.ForeignKey(Department, blank=False, verbose_name="Department")
     photo = models.ImageField(upload_to = __get_path_faculty__, default = 'null')
     designation = models.CharField(max_length = 50, null = True, blank = True)
     qualification = models.CharField(max_length = 100, null = True, blank = True)
     area_of_interest = models.CharField(max_length = 100, null = True, blank = True)
-    contact_off = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-    contact_res = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
+    contact_off = models.IntegerField(null = True, blank = True, validators=[tenDigitContact],
+                                      verbose_name="Contact office")
+    contact_res = models.IntegerField(null = True, blank = True, validators=[tenDigitContact],
+                                      verbose_name="Contact residence")
     contact_other = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     email_off = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation],
-                                  error_messages = {'invalid':'Enter your Official Email-ID.'})
+                    error_messages = {'invalid':'Enter your Official Email-ID.'}, verbose_name="E-mail official")
     email_other = models.EmailField(unique = True,null = True, blank =True, default = None)
     #Available/Out of Station/On Leave
     status = models.CharField(max_length = 10, null = True, blank = True)
@@ -198,11 +200,11 @@ class Student(models.Model):
     }
     roll_no = models.CharField(unique = True, max_length = 20, primary_key = True, blank = False, validators=[alphanum])
     name = models.CharField(max_length = 50, null = False, blank = False)
-    year_of_admission = models.IntegerField(null = False, blank = False, default = 0, editable = False)
+    year_of_admission = models.PositiveSmallIntegerField(null = False, blank = False, default = 0, editable = False)
     degree = models.IntegerField(choices = DEGREE, default = 1)
     email = models.EmailField(unique = True, null = False, blank = False, validators = [emailValidation],
                               error_messages = {'invalid':'Enter your Official Email-ID.'})
-    dept = models.ForeignKey(Department)
+    dept = models.ForeignKey(Department, verbose_name="Department")
 
     def save(self,*args,**kwargs):
         #extract year from email.
@@ -214,21 +216,21 @@ class Student(models.Model):
 
 class Phd(models.Model):
     name = models.CharField(max_length = 50, null = False, blank = False)    
-    dept = models.ForeignKey(Department)
+    dept = models.ForeignKey(Department, verbose_name="Department")
     supervisor = models.CharField(max_length = 50, null = True, blank = True)
     co_supervisor = models.CharField(max_length = 50, null = True, blank = True)
 
 
 class PhdResearch(models.Model):
     name = models.CharField(max_length = 50, null = False, blank = False)    
-    dept = models.ForeignKey(Department)
+    dept = models.ForeignKey(Department, verbose_name="Department")
     supervisor = models.CharField(max_length = 50, null = True, blank = True)
     topic = models.CharField(max_length = 200, null = False, blank = False)    
     status = models.CharField(max_length = 50, null = False, blank = False)    
 
 class Staff(models.Model):
     name = models.CharField(max_length = 50, null = False, blank = False)
-    dept = models.ForeignKey(Department, null = False, blank = False)
+    dept = models.ForeignKey(Department, null = False, blank = False, verbose_name="Department")
     designation = models.CharField(max_length = 50, null = False, blank = False)
     email = models.EmailField(null = True, blank = True)
 
@@ -267,7 +269,7 @@ class StudentsPost(models.Model):
 
 class FacultiesPost(models.Model):
     post = models.ForeignKey(Post, limit_choices_to={'post_hold_by': '1'})
-    dept = models.ForeignKey(Department)
+    dept = models.ForeignKey(Department, verbose_name="Department")
     faculty = models.ForeignKey(Faculty)
 
 class StaffsPost(models.Model):
@@ -363,7 +365,7 @@ class Image(models.Model):
 #Institute
 class SeminarsConf(models.Model):
     title = models.CharField(max_length = 50, null = False, blank = False)
-    desc = models.CharField(max_length = 100, null = True, blank = True)
+    desc = models.CharField(max_length = 100, null = True, blank = True, verbose_name="description")
     doc = models.FileField(upload_to = __get_path_seminars__)
     date = models.CharField(max_length = 20, null = True, blank = True)
     time = models.CharField(max_length = 10, null = True, blank = True)
@@ -375,9 +377,9 @@ class SeminarsConf(models.Model):
 
 class Event(models.Model):
     event_name = models.CharField(max_length = 100, null = True, blank = True)
-    event_dt = models.CharField(max_length = 100, null = True, blank = True)
+    event_dt = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Event date")
     event_venue = models.CharField(max_length = 100, null = True, blank = True)
-    event_desc = models.CharField(max_length = 100, null = True, blank = True)
+    event_desc = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Event description")
 
     def __unicode__(self):
         return smart_unicode(self.event_name)
@@ -385,9 +387,9 @@ class Event(models.Model):
 
 class Tender(models.Model):
     tender_id = models.CharField(max_length = 100, null = True, blank = True)
-    dept = models.CharField(max_length = 100, null = True, blank = True)
-    posting_dt = models.CharField(max_length = 100, null = True, blank = True)
-    closing_dt = models.CharField(max_length = 100, null = True, blank = True)
+    dept = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Department")
+    posting_dt = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Posting date")
+    closing_dt = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Closing date")
     desc = models.CharField(max_length = 100, null = True, blank = True)
 
     def __unicode__(self):
@@ -415,7 +417,7 @@ class Committee(models.Model):
 class CommDetail(models.Model):
     comm_id = models.IntegerField(null = False, blank = False)
     comm_for = models.CharField(max_length = 100, null = True, blank = True)
-    notif_no = models.CharField(max_length = 100, null = True, blank = True)
+    notif_no = models.CharField(max_length = 100, null = True, blank = True, verbose_name="Notification number")
     dated = models.CharField(max_length = 100, null = True, blank = True)
     comm_doc = models.FileField(upload_to = __get_path_committees__, default = 'null')
     comm_img = models.ImageField(upload_to = __get_path_committees__, default = 'null')
@@ -542,7 +544,7 @@ class Wmes(models.Model):
 class NewsBoard(models.Model):
     news_of = models.CharField(max_length = 20 , blank = False , null = False)
     title = models.CharField(max_length = 200)
-    descr = models.TextField(blank  = True)
+    descr = models.TextField(blank  = True, verbose_name="Description")
     date =  models.DateField(null = False)
     
     def __unicode__(self):
@@ -560,7 +562,7 @@ class NewEntrants(models.Model):
 class Admission(models.Model):
     admin_in_course = models.CharField(max_length = 100,null = False , blank = True)
     title = models.CharField(max_length = 300, blank = False , null= False)
-    adm_doc = models.FileField(upload_to = __get_path_admdoc__ ,default = 'null')
+    adm_doc = models.FileField(upload_to = __get_path_admdoc__ ,default = 'null', verbose_name="Admission document")
     
     def __unicode__(self):
         return smart_unicode(self.title)
