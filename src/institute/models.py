@@ -137,16 +137,17 @@ INITIAL = 1
 
 
 class Department(models.Model):
-    dept_code = models.CharField(unique=True, max_length = 2, primary_key = True, blank = False)
-    dept_name = models.CharField(max_length = 50, blank=False, null=True)
-    contact1 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
+    dept_code = models.CharField(unique=True, max_length = 2, primary_key = True, blank = False,
+                                 verbose_name="Department Code")
+    dept_name = models.CharField(max_length = 50, blank=False, null=True, verbose_name="Department Name")
+    contact1 = models.IntegerField(null = False, blank = False, validators=[tenDigitContact])
     contact2 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-    other_details = models.TextField(blank=True, null=True)
+    dept_heading = models.TextField(blank=True, null=True, verbose_name="Department heading")
     about = models.TextField(blank = False, null = False, default="This can't be empty")
-    b_tech = models.BooleanField(default=True)
-    idd = models.BooleanField(default=True)
-    m_tech = models.BooleanField(default=True)
-    ph_d = models.BooleanField(default=True)
+    b_tech = models.BooleanField(default=True, verbose_name="B.Tech")
+    idd = models.BooleanField(default=True, verbose_name="IDD")
+    m_tech = models.BooleanField(default=True, verbose_name="M.Tech")
+    ph_d = models.BooleanField(default=True, verbose_name="PhD")
 
     def __unicode__(self):
         return smart_unicode(self.dept_code)+' : '+smart_unicode(self.dept_name)

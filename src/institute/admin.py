@@ -32,12 +32,22 @@ class HeadOfDepartmentAdmin(admin.ModelAdmin):
     model = Faculty
     list_filter = ("")
 
+
 class NotificationAdmin(admin.ModelAdmin):  
     prepopulated_fields = {'slug':('title',)}
     #pass
 
+
+class DepartmentHomepage(admin.ModelAdmin):
+    fieldsets = [
+        (None,  {'fields' : ('dept_code', 'dept_name')}),
+        ('Contact Details',     {'fields' : ('contact1', 'contact2')}),
+        ('Courses Offered',      {'fields' : (('b_tech', 'idd', 'm_tech', 'ph_d'),)}),
+        ('Homepage Content',     {'fields' : ('dept_heading', 'about')})
+    ]
+
         
-admin.site.register(Department, instituteAdmin)
+admin.site.register(Department, DepartmentHomepage)
 admin.site.register(Faculty, instituteAdmin)
 admin.site.register(Student)
 admin.site.register(Staff, instituteAdmin)
