@@ -60,7 +60,7 @@ def department(request, dept_code):
        
     except:
         raise Http404
-        
+
     return  render(request, 'department.html', context_dict)
 
 

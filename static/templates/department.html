@@ -36,7 +36,8 @@
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
                         {% if Department.contact1 %}
-                            <div class="top-number"><p><i class="fa fa-phone-square"></i>+91{{ Department.contact1 }}</p></div>
+                            <div class="top-number"><p><i class="fa fa-phone-square"></i>+91{{ Department.contact1 }}
+                                {% if Department.contact2 %}, +91{{ Department.contact1 }} {% endif %}</p></div>
                         {% endif %}
                     </div>
                     <div class="col-sm-6 col-xs-8">
@@ -94,7 +95,7 @@
                             <a href="{% url 'course' Department.dept_code %}" class="dropdown-toggle" data-toggle="dropdown">Courses<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'course' Department.dept_code %}#">B.Tech</a></li>
-                                <li><a href="{% url 'course' Department.dept_code %}#mtech">M.Tech/IDD</a></li>
+                                i<li><a href="{% url 'course' Department.dept_code %}#mtech">M.Tech/IDD</a></li>
                                 <li><a href="{% url 'course' Department.dept_code %}#phd">Ph.D</a></li>
                             </ul>
                         </li>
@@ -128,7 +129,7 @@
     <section id="blog" class="container">
         <div class="center" style="padding-bottom: 10px;">
             <h2 align="left">Department of {{ Department.dept_name }}</h2>
-            <p class="lead" align="left">The department was selected by the Ministry of Communications and Information Technology as a node in the National endeavor on Technology Development for Indian Languages.</p>
+            <p class="lead" align="left">{% autoescape off %}{{ Department.other_details }}{% endautoescape %}</p>
         </div>
 
         <div class="blog">
@@ -142,7 +143,7 @@
                               
                                 <div class="col-xs-12 col-sm-12 blog-content" style=" text-align: justify; text-justify: inter-word;">
                                     <h2>About the Department</h2>
-                                    <p> The Department of Computer Engineering was established in July 1983. The department offers a  4 year course, B.Tech. in Computer Sc. & Engineering, 5 year Integrated Dual Degree (B.Tech. and M.Tech.) in Computer  Sc. & Engineering from 2005-2006, and Ph.D. degree in various specializations of Computer Sc. and Engineering. Computer Sc. & Engineering is the most sought-after branch for the JEE selected students that come to the Institute. Our graduates have distinguished themselves in higher studies at the top Universities. They also occupy positions of eminence in the computer industry. Our Alumni remain in constant touch with us and are contributing in the development of the department. Placements for our graduates are the best in the Institute. The department has on its roll faculty members with international experience and training. The departmental research is focused in the areas of Artificial Intelligence, Neuro Computing, Parallel Processing,Software Engineering, Image Processing and Computer Vision, Medical Image Processing, Pattern Recognition, Datamining and Webmining, Biometrics and semantic web. Besides plan funding, the Department attracts financial inputs through externally funded projects and alumni donations. The department was selected by the Ministry of Communications and Information Technology as a node in the National endeavor on Technology Development for Indian Languages.</p>
+                                    <p>{% autoescape off %}{{ Department.about }}{% endautoescape %}</p>
                                 </div>
                             </div>
                         </div><!--/.blog-item-->
