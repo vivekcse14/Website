@@ -2501,20 +2501,19 @@ ul.sidebar-gallery {
 .blog .row .publications_panel li:hover .name{
 	width:100%;
 	height:30%;
-	background:url(../../static/images/transparent_bg2.png);
-	opacity:0.8;
+  background-color:rgba(139,73,126,0.65);
 	
 }
 .blog .row .publications_panel li .name{
 	width:100%;
 	height:30%;
-	background:url(../../static/images/transparent_bg2.png);
-	opacity:0.6;
+  background-color:rgba(139,73,126,0.65);
 	
 }
 
 .blog .row .publications_panel li span  p{
-	color:#2E9AFE;
+	color: #fff;
+  /*color:#2E9AFE;*/
 	padding-left:5%;
 	padding-right:5%;
 	
