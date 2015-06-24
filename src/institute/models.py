@@ -141,6 +141,12 @@ class Department(models.Model):
     dept_name = models.CharField(max_length = 50, blank=False, null=True)
     contact1 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
     contact2 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
+    other_details = models.TextField(blank=True, null=True)
+    about = models.TextField(blank = False, null = False, default="This can't be empty")
+    b_tech = models.BooleanField(default=True)
+    idd = models.BooleanField(default=True)
+    m_tech = models.BooleanField(default=True)
+    ph_d = models.BooleanField(default=True)
 
     def __unicode__(self):
         return smart_unicode(self.dept_code)+' : '+smart_unicode(self.dept_name)
@@ -254,17 +260,17 @@ class Post(models.Model):
 
 
 class StudentsPost(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, limit_choices_to={'post_hold_by': '2'})
     roll_no = models.CharField(max_length = 20, blank = False, validators=[alphanum])
 
 
 class FacultiesPost(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, limit_choices_to={'post_hold_by': '1'})
     dept = models.ForeignKey(Department)
     faculty = models.ForeignKey(Faculty)
 
 class StaffsPost(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, limit_choices_to={'post_hold_by': '3'})
     employee_id = models.CharField(max_length = 20, blank = False, validators=[alphanum])
 
 
@@ -319,10 +325,10 @@ class Course(models.Model):
     #Theory/Practical
     type = models.IntegerField(choices = COURSE_TYPE, default = 1)
     #Value = 1 for the appropriate degree
-    b_tech = models.IntegerField(default = 0)
-    idd = models.IntegerField(default = 0)
-    m_tech = models.IntegerField(default = 0)
-    ph_d = models.IntegerField(default = 0)
+    b_tech = models.BooleanField(default=True)
+    idd = models.BooleanField(default=True)
+    m_tech = models.BooleanField(default=True)
+    ph_d = models.BooleanField(default=True)
     dept = models.CharField(max_length = 3, null = False, blank = False)
     course_offered_by = models.CharField(max_length = 3, null = False, blank = False)
 
