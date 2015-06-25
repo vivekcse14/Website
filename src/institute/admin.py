@@ -1,8 +1,10 @@
 from django.contrib import admin
-
 # Register your models here.
 from institute.models import *
+from dept.models import *
 
+
+# Create your models here.
 
 class instituteAdmin(admin.ModelAdmin):
     class Meta:

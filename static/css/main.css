@@ -2638,7 +2638,7 @@ ul.sidebar-gallery {
 	width:100%;
 	height:100%;
 	background:#F5F6CE;
-	box-shadow:5px 5px 5px #888888;
+	box-shadow:2px 2px 2px #888888;
 	text-align:left;
 }
 .blog .row .publications_panel .tile:hover{
@@ -2646,19 +2646,19 @@ ul.sidebar-gallery {
 	width:100%;
 	height:100%;
 	background:#F5F6CE;
-	box-shadow:2px 2px 2px #888888;
+	box-shadow:5px 5px 5px #888888;
 	text-align:left;
 }
-.blog .row .publications_panel .row  .tile:hover .name{
+/*.blog .row .publications_panel .row  .tile:hover .name{
 	width:100%;
 	height:30%;
 	background:url(../../static/images/transparent_bg2.png);
 	opacity:0.7;
-}
+}*/
 .blog .row .publications_panel .tile .name{
 	width:100%;
 	height:30%;
-	background:url(../../static/images/transparent_bg2.png);
+	background:rgba(0,0,0,1.0);
 	opacity:0.6;
 }	
 .blog .row .publications_panel .row .tile span  p{

@@ -24,6 +24,17 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'',include('institute.urls')),
+    url(r'',include('dept.urls')),
+    # url(r'',include('ce.urls')),
+    # url(r'',include('ch.urls')),
+    # url(r'',include('cr.urls')),
+    # url(r'',include('cs.urls')),
+    # url(r'',include('ec.urls')),
+    # url(r'',include('ee.urls')),
+    # url(r'',include('me.urls')),
+    # url(r'',include('mn.urls')),
+    # url(r'',include('mt.urls')),
+    # url(r'',include('ph.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
