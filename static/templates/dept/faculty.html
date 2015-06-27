@@ -1,4 +1,4 @@
-{% extends 'dept_base.html' %}
+{% extends 'activity_base.html' %}
 
 {% block title %}
 Faculty - {{ Department.dept_name }}
@@ -39,25 +39,29 @@ Faculty - {{ Department.dept_name }}
 
 
 {% block table %}
+<div style="padding-bottom: 10px;">
+    <h2>Faculty:</h2>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 ">
+		<div class="slogan-section">
+			<p><i>"The professor is not merely an information dispensing machine, but a skilled navigator of a complex landscape." -</i> William Badk</p>
+        </div>
+	</div>
+</div>
 <div class="home-profs  clearfix">
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 ">
-				<div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-					<h1><span>Faculty List</span></h1><p><i>"The professor is not merely an information dispensing machine, but a skilled navigator of a complex landscape." -</i> William Badk</p>                    </div>
-			</div>
-		</div>
 		<div class="list_faculties">
 			 {% for faculty in Faculties  %}
 			 <div class="doc-item">
 				<div class="common-prof animated fadeInUp clearfix ae-animation-fadeInUp">
 
 					<ul class="list-inline social-lists animate">
+						<li><a href="#"><i class="fa fa-user"></i></a></li>
 						<li><a href="#"><i class="fa fa-phone"></i></a></li>
 						<li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-						<li><a href="#"><i class="fa fa-user"></i></a></li>
+						<li><a href="#"><i class="fa fa-github"></i></a></li>
 					</ul>
-
 
 					<figure>
 					<!-- {{ forloop.counter }}: <img src="/media/{{ faculty.photo }}" height="320px" width="280px"> -->

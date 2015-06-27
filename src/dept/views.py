@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, HttpResponse
 from django.http import Http404
 from django.db.models import Sum
@@ -376,6 +377,10 @@ def publication(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
+    def RandomColor():
+        r = lambda: random.randint(0,255)
+        return ('#%02X%02X%02X' % (r(),r(),r()))
+    context_dict['RandomColor'] = RandomColor()
     return render(request,'dept_publications.html',context_dict)
 
 

@@ -67,4 +67,16 @@ jQuery(function($) {'use strict',
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false
 	});	
+
+	//RandomColorGenerator
+	$('div.hex').css('border-top','solid 4px #'+((1<<24)*Math.random()|0).toString(16));
+    // function RandomColor() {
+    //     var letters = '0123456789ABCDEF'.split('');
+    //     var color = '#';
+    //     for (var i = 0; i < 6; i++ ) {
+    //         color += letters[Math.floor(Math.random() * 16)];
+    //     }
+    //     return color;
+    //     // return "#"+((1<<24)*Math.random()|0).toString(16)
+    // }
 });

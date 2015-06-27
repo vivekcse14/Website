@@ -4,19 +4,23 @@
     Publications - {{ Department.dept_name }}
 {% endblock %}
 
+{% block people %} 
+<li class="dropdown">
+{% endblock %}
+
 {% block activities %} 
 <li class="active dropdown">
 {% endblock %}
 
 {% block body %}
-    <div style="padding-bottom: 10px;">
-        <h2>Publications:</h2>
-    </div>
+<div style="padding-bottom: 10px;">
+    <h2>Publications:</h2>
+</div>
 <div class="pub_wrap">
 	<div class ='publications_panel'>
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-				<div class="tile" id ="first" onclick="location.href='http://www.example.com';" style="cursor:pointer;">		
+				<div class="tile hex" id ="first" onclick="location.href='http://www.example.com';" style="cursor:pointer;">		
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews r Asia Bond Monitor  Asia Bond Monitor reviews rs Asia Bond Monitor reviews r Asia Bond Monitor reviews rreviews r Asia Bond Monitor reviews r Asia Bond Monitor reviews r Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -30,7 +34,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id ="second" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id ="second" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -44,7 +48,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id="third" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id="third" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -58,7 +62,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id ="fourth" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id ="fourth" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -73,7 +77,7 @@
 			</div>
 		
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id ="first" onclick="location.href='http://www.example.com';" style="cursor:pointer;">		
+					<div class="tile hex" id ="first" onclick="location.href='http://www.example.com';" style="cursor:pointer;">		
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -87,7 +91,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id ="second" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id ="second" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -101,7 +105,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id="third" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id="third" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
@@ -115,7 +119,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-					<div class="tile" id ="fourth" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+					<div class="tile hex" id ="fourth" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
 					<div id ="publication_date">Published on-dd/mm/yyyy</div>
 					<h2 style="color:#1C25A6">Asia Bond Monitor - June 2015</h2>
 					<div class ="abstract"><p>The Asia Bond Monitor reviews recent developments in East Asian local currency bond markets along with the outlook, risks, and policy options. This issue includes a special section on Bond Financing for Renewable Energy.<span style="color:#4672F5">Read more...</span> </p></div>
