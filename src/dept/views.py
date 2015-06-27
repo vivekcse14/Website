@@ -167,7 +167,8 @@ def alumni(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    return render(request,'alumni.html',context_dict)
+    html = dept_code1+'/alumni.html'
+    return render(request,html,context_dict)
 
     
 def dept_admission(request, dept_code):
@@ -177,7 +178,8 @@ def dept_admission(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    return render(request,'dept_admission.html',context_dict)
+    html = dept_code1+'/admission.html'
+    return render(request,html,context_dict)
 
 
 def course(request, dept_code):
@@ -366,8 +368,9 @@ def research(request, dept_code):
         full_list = izip_longest(sv_list, names)
         context_dict['full_list'] = full_list
     except:
-        raise Http404        
-    return render(request,'research.html',context_dict)
+        raise Http404      
+    html = dept_code1+'/research.html'  
+    return render(request,html,context_dict)
 
 
 def publication(request, dept_code):
@@ -389,6 +392,11 @@ def project(request, dept_code):
     try:
         dept = Department.objects.get(dept_code = dept_code1)
         context_dict['Department'] = dept
+    except:
+        raise Http404
+    try:
+        projects = Project.objects.filter(dept = dept_code1)
+        context_dict['Projects'] = projects
     except:
         raise Http404
     return render(request,'project.html',context_dict)
@@ -414,14 +422,14 @@ def talk(request, dept_code):
     return render(request,'talk.html',context_dict)
 
 
-def library(request, dept_code):
+def equipment(request, dept_code):
     dept_code1 = dept_code[:2].upper()
     try:
         dept = Department.objects.get(dept_code = dept_code1)
         context_dict['Department'] = dept
     except:
         raise Http404
-    return render(request,'library.html',context_dict)
+    return render(request,'equipment.html',context_dict)
 
 
 def lab(request, dept_code):
@@ -441,7 +449,8 @@ def placement(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    return render(request,'placement.html',context_dict)
+    html = dept_code1+'/placement.html'
+    return render(request,html,context_dict)
 
 
 def contact(request, dept_code):

@@ -1,7 +1,11 @@
-{% extends 'activity_base.html' %}
+{% extends 'dept_base2.html' %}
 
 {% block title %}
     Projects - {{ Department.dept_name }}
+{% endblock %}
+
+{% block people %} 
+<li class="dropdown">
 {% endblock %}
 
 {% block activities %} 
@@ -11,6 +15,8 @@
 {% block body %}
     <div style="padding-bottom: 10px;">
         <h2>Projects:</h2>
+        {% block project_data %}
+        {% endblock %}
     </div>
 
 {% endblock %}

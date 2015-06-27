@@ -197,10 +197,25 @@ class Course(models.Model):
 
 
 class HeadOfDepartments(models.Model):
-    department = models.ForeignKey(Department , blank=False)
+    dept = models.ForeignKey(Department , blank=False)
     name = models.ForeignKey(Faculty)
     
     def __unicode__(self):
         return smart_unicode(self.department)
 
 
+class Project(models.Model):
+    UNITS = {
+                ('Thousand','Thousand'),
+                ('Lakhs','Lakhs'),
+                ('Millions','Millions'),
+                ('Crores','Crores'),
+            }
+    dept = models.ForeignKey(Department, blank=False)
+    year = models.CharField(max_length = 30, null = True, blank = True)
+    project = models.CharField(max_length = 100, null = False, blank = False)
+    sponsor = models.CharField(max_length = 50, null = False, blank = False)
+    amount = models.FloatField(default = 0.0)
+    units = models.CharField(choices = UNITS, max_length = 15, null = False, blank = False)
+    #Person who undertook the project
+    investigator = models.CharField(max_length = 50, null = False, blank = False)
