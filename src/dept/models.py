@@ -201,7 +201,7 @@ class HeadOfDepartments(models.Model):
     name = models.ForeignKey(Faculty)
     
     def __unicode__(self):
-        return smart_unicode(self.department)
+        return smart_unicode(self.dept)
 
 
 class Project(models.Model):
@@ -219,3 +219,6 @@ class Project(models.Model):
     units = models.CharField(choices = UNITS, max_length = 15, null = False, blank = False)
     #Person who undertook the project
     investigator = models.CharField(max_length = 50, null = False, blank = False)
+
+    def __unicode__(self):
+        return smart_unicode(self.project)

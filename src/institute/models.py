@@ -284,7 +284,7 @@ class BoardOfGovernor(models.Model):
     nominated_by = models.CharField(max_length = 100)
 
     def __unicode__(self):
-        return smart_unicode(self.level)+' : '+smart_unicode(self.name)+' : '+smart_unicode(self.rank)
+        return smart_unicode(self.position)+' : '+smart_unicode(self.name)+' : '+smart_unicode(self.rank)
 
 """
 class HostelAdmin(models.Model):

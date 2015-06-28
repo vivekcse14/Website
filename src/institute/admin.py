@@ -22,14 +22,14 @@ class instituteAdmin(admin.ModelAdmin):
         #model = Committee
         model = CommDetail
         model = AdminOfficial
-        #model = BoardOfGovernor
+        model = BoardOfGovernor
         #model = HostelAdmin
         model = RankList
         #model = History
         model = TenderDoc
         model = PhdResearch
         model = Phd
-
+        model = Project
 
 class HeadOfDepartmentAdmin(admin.ModelAdmin):
     model = Faculty
@@ -76,6 +76,7 @@ admin.site.register(Student)
 admin.site.register(Staff, DepartmentFilter)
 admin.site.register(Notification, NotificationAdmin)
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Project, DepartmentFilter)
 admin.site.register(Gallery, instituteAdmin)
 admin.site.register(Image, instituteAdmin)
 admin.site.register(SeminarsConf, instituteAdmin)
@@ -89,7 +90,7 @@ admin.site.register(FacultiesPost, instituteAdmin)
 admin.site.register(StaffsPost, instituteAdmin)
 admin.site.register(CommDetail, instituteAdmin)
 admin.site.register(AdminOfficial, instituteAdmin)
-#admin.site.register(BoardOfGovernor, instituteAdmin)
+admin.site.register(BoardOfGovernor, instituteAdmin)
 #admin.site.register(HostelAdmin, instituteAdmin)
 admin.site.register(RankList, instituteAdmin)
 #admin.site.register(History, instituteAdmin)

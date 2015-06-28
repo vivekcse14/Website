@@ -41,17 +41,19 @@ def home(request):
 
 def boardofgovernors(request):  
     try:
-        board = BoardOfGovernor.objects.get().order_by(level_id)
+        board = BoardOfGovernor.objects.all()
         context_dict['Board_mem'] = board
         rank_title = ["Chairman",
                       "Director(Ex-officio)Member",
                       "Members",
                       "Secretary",
                       ]
-        context_dict[ranklist] = rank_title; 
+        counter = [1,2,3,4,5,6,7,8,9,0]
+        full_list = zip(counter,rank_title)
+        context_dict['full_list'] = full_list
     except:
         raise Http404
-    return render(request,'boofgov.html',context_dict)
+    return render(request,'bog.html',context_dict)
 
 
 def notification_all(request, dept_code=None):
