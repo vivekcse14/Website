@@ -51,16 +51,15 @@ Faculty - {{ Department.dept_name }}
 </div>
 <div class="home-profs  clearfix">
 	<div class="container">
-		<div class="list_faculties">
+		<div class="row">
 			 {% for faculty in Faculties  %}
-			 <div class="doc-item">
+             <div class="col-lg-3 col-md-3 col-sm-6 doc-item">
 				<div class="common-prof animated fadeInUp clearfix ae-animation-fadeInUp">
 
 					<ul class="list-inline social-lists animate">
-						<li><a href="#"><i class="fa fa-user"></i></a></li>
-						<li><a href="#"><i class="fa fa-phone"></i></a></li>
+						<li><a href="#">&nbsp;<i class="fa fa-facebook"></i>&nbsp;</a></li>
+						<li><a href="#">Profile<!-- <i class="fa fa-github"></i> --></a></li>
 						<li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-						<li><a href="#"><i class="fa fa-github"></i></a></li>
 					</ul>
 
 					<figure>
@@ -68,13 +67,15 @@ Faculty - {{ Department.dept_name }}
 						   <img  src="\static\images\man4.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="prof-img"> 
 					</figure>
 
+					<span class="sexy-line"></span>
+					<br>
 					<div class="text-content">
 						<h5>{{ faculty.name }}</h5>
 						<h5><small>Designation: {{ faculty.designation }}</small></h5>
 						<p> <b>Qualification: </b>  {{ faculty.qualification }}</p>
 						<p> <b>Area of Interest: </b> {{ faculty.area_of_interest }}</p>
 						<p> <b>Contact: </b>{% if faculty.contact_off %}+91{{ faculty.contact_off }} (O){% endif %}{% if faculty.contact_res %}, +91{{ faculty.contact_res }} (Res){% endif %}{% if faculty.contact_other %}, +91{{ faculty.contact_other }}{% endif %}</p>
-						<p> <b>E-mail: </b>{{ faculty.email_off }} (O){% if faculty.email_other %}, {{ faculty.email_other }} {% endif %}</p>
+						<p> <b>E-mail: </b>{{ faculty.email_off }} {% if faculty.email_other %}, {{ faculty.email_other }} {% endif %}</p>
 					</div>
 				</div>
 			</div>
