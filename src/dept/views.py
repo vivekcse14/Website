@@ -369,7 +369,7 @@ def research(request, dept_code):
         context_dict['full_list'] = full_list
     except:
         raise Http404      
-    html = dept_code[:2]1+'/research.html'  
+    html = dept_code[:2]+'/research.html'  
     return render(request,html,context_dict)
 
 

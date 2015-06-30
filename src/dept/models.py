@@ -34,8 +34,6 @@ class Department(models.Model):
     dept_name = models.CharField(max_length = 50, blank=False, null=True, verbose_name="Department Name")
     contact1 = models.IntegerField(null = False, blank = False, validators=[tenDigitContact])
     contact2 = models.IntegerField(null = True, blank = True, validators=[tenDigitContact])
-    dept_heading = models.TextField(blank=True, null=True, verbose_name="Department heading")
-    about = models.TextField(blank = False, null = False, default="This can't be empty")
     b_tech = models.BooleanField(default=True, verbose_name="B.Tech")
     idd = models.BooleanField(default=True, verbose_name="IDD")
     m_tech = models.BooleanField(default=True, verbose_name="M.Tech")

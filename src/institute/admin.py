@@ -46,7 +46,6 @@ class DepartmentHomepage(admin.ModelAdmin):
         (None,                  {'fields': ('dept_code', 'dept_name')}),
         ('Contact Details',     {'fields': ('contact1', 'contact2')}),
         ('Courses Offered',      {'fields': (('b_tech', 'idd', 'm_tech', 'ph_d'),)}),
-        ('Homepage Content',     {'fields': ('dept_heading', 'about')})
     ]
 
 
