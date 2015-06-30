@@ -31,7 +31,7 @@ def department(request, dept_code):
                 
         except:
             pass
-        html = dept_code+'/home.html'
+        html = dept_code[:2]+'/home.html'
     except:
         raise Http404
 
@@ -167,7 +167,7 @@ def alumni(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    html = dept_code+'/alumni.html'
+    html = dept_code[:2]+'/alumni.html'
     return render(request,html,context_dict)
 
     
@@ -178,7 +178,7 @@ def dept_admission(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    html = dept_code+'/admission.html'
+    html = dept_code[:2]+'/admission.html'
     return render(request,html,context_dict)
 
 
@@ -369,7 +369,7 @@ def research(request, dept_code):
         context_dict['full_list'] = full_list
     except:
         raise Http404      
-    html = dept_code1+'/research.html'  
+    html = dept_code[:2]1+'/research.html'  
     return render(request,html,context_dict)
 
 
@@ -449,7 +449,7 @@ def placement(request, dept_code):
         context_dict['Department'] = dept
     except:
         raise Http404
-    html = dept_code+'/placement.html'
+    html = dept_code[:2]+'/placement.html'
     return render(request,html,context_dict)
 
 
